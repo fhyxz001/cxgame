@@ -8,12 +8,12 @@ const router = useRouter();
 
 // 常量
 const MAX_DICE = 6;
-const MAX_HEALTH = 3;
+const MAX_HEALTH = 4;
 
 // 响应式数据
 const logMessages = ref([]);
 const user = ref(JSON.parse(localStorage.getItem('user') || '{}'));
-const health = ref(3);
+const health = ref(4);
 const duelState = ref(false);
 const gameOver = ref(false);
 const newUsers = users.filter(u => u.id !== user.value.id);
@@ -204,9 +204,11 @@ onMounted(() => {
         <img v-if="user?.url" :src="pkUser.url" class="avatar"/>
       </div>
     </div>
-<!--    <div class="bottom-panel" v-if="eventNow.img!=null">-->
-<!--      <img :src="eventNow.img" class="event-img" alt=""/>-->
-<!--    </div>-->
+    <div class="bottom-panel" v-if="eventNow.img!=null">
+      <div class="avatar-placeholder">
+        <img :src="eventNow.img" class="avatar"/>
+      </div>
+    </div>
 
     <!-- 游戏总结弹窗 -->
     <el-dialog v-model="summaryVisible" title="游戏总结" width="400px" align-center>

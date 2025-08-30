@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
 
 module.exports = defineConfig({
-  publicPath: '/cxgame/',
+  publicPath: './',
   transpileDependencies: true,
 
   // 配置路径别名

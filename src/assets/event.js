@@ -32,8 +32,7 @@ export const events = [
         id:6,
         type:-1,
         rela:15,
-        content: '被翻译机发在群里的巨乳色图乱了道心👩',
-        img:require('@/assets/eventImg/ero.png')
+        content: '被翻译机发在群里的巨乳色图乱了道心👩'
     },
     {
         id:7,
@@ -64,6 +63,6 @@ export const events = [
         id:11,
         type:0,
         roll:1,
-        content: '{name}在群里鉴证，用骰子决胜负吧🎲'
+        content: '{name}在群里键政，用骰子决胜负吧🎲'
     }
 ]

@@ -1,0 +1,23 @@
+export const skills=[
+    {
+        id:1,
+        name:"色魔",
+        type:0,
+        desc:'这个人喜好美色且脸皮厚(被动:免疫社死事件卡扣血)',
+        immunize:[8,6]
+    },
+    {
+        id:2,
+        name:"键政狂魔",
+        type:0,
+        desc:'没有人比他更懂国际政治(被动:键政事件roll点+1)',
+        rollBuff:[11]
+    },
+    {
+        id:3,
+        name:"性别对立话题爱好者",
+        type:0,
+        desc:'非常善于在性别对立话题上击垮别人(被动:性别对立事件roll点+1)',
+        rollBuff:[10]
+    }
+]

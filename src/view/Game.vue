@@ -8,12 +8,12 @@ const router = useRouter();
 
 // 常量
 const MAX_DICE = 6;
-const MAX_HEALTH = 4;
+const MAX_HEALTH = 3;
 
 // 响应式数据
 const logMessages = ref([]);
 const user = ref(JSON.parse(localStorage.getItem('user') || '{}'));
-const health = ref(4);
+const health = ref(3);
 const duelState = ref(false);
 const gameOver = ref(false);
 const newUsers = users.filter(u => u.id !== user.value.id);
@@ -22,6 +22,8 @@ const pkUser = ref(null);
 const pkUserRoll = ref(0);
 const userRoll = ref(0);
 const eventNow = ref({});
+const eroImgShow = ref(false);
+const eroImg = ref('');
 
 // 新增：事件记录数组
 const eventHistory = ref([]);
@@ -81,7 +83,6 @@ const singlePull = () => {
   } else {
     health.value = Math.max(0, Math.min(MAX_HEALTH, health.value + eventNow.value.type));
     pushLog(eventNow.value.content);
-
     // 记录事件
     eventHistory.value.push({
       round: round.value,
@@ -89,9 +90,28 @@ const singlePull = () => {
       content: eventNow.value.content,
       health: health.value
     });
-    checkGameOver();
   }
+  checkGameOver();
 };
+const getEroApi=()=>{
+  return new Promise((resolve, reject) => {
+    fetch('https://lolisuki.cn/api/setu/v1',{
+      method: 'GET',
+      headers: {
+        'r18':1,
+        'num':1,
+        'level':3
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        resolve(data);
+      })
+      .catch(error => {
+        reject(error);
+      });
+  });
+}
 
 const rollTheDice = () => {
   if (gameOver.value) return;
@@ -205,7 +225,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="bottom-panel" v-if="eventNow.img!=null">
-      <div class="avatar-placeholder">
+      <div class="event-img">
         <img :src="eventNow.img" class="avatar"/>
       </div>
     </div>
@@ -359,6 +379,8 @@ onMounted(() => {
 }
 .event-img{
   position: fixed;
+  height: 25vh;
+  left: 11vw;
   bottom: 0;
 }
 </style>
